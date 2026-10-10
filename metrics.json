@@ -1,0 +1,8 @@
+{
+  "pytorch_mlp_test_accuracy": 0.9778,
+  "logistic_regression_test_accuracy": 0.9667,
+  "epochs": 60,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "seed": 42
+}

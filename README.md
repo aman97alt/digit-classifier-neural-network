@@ -1,44 +1,21 @@
-# Handwritten Digit Classification — Neural Network (MLP)
+# Handwritten Digit Classification (PyTorch)
 
-A multi-class image classification project that recognizes handwritten digits (0–9)
-using a **Multi-Layer Perceptron (feedforward neural network)** trained with
-backpropagation — the foundational deep learning architecture.
+A Multi-Layer Perceptron (64 -> 100 -> 50 -> 10, ReLU, Adam) built in PyTorch to
+recognize handwritten digits from the scikit-learn digits dataset (1,797 samples, 8x8 images).
+It is compared against a Logistic Regression baseline on the same split.
 
-## Dataset
-`digits` dataset (scikit-learn) — 1,797 samples of 8×8 grayscale handwritten digit
-images (64 pixel features), 10 classes. Same family of problem as the classic MNIST
-digit recognition task, at a smaller scale.
+## Run
+```
+pip install -r requirements.txt
+python train.py
+```
+Optional flags: `--epochs 60 --batch-size 32 --lr 0.001 --seed 42`
 
-## Approach
-- Loaded and visualized the digit images
-- Split data into train/test sets (80/20, stratified)
-- Scaled pixel features with `StandardScaler`
-- Trained a baseline **Logistic Regression** model for comparison
-- Built and trained a **Neural Network (MLP)**: 64 → 100 → 50 → 10 architecture,
-  ReLU activation, Adam optimizer, trained via backpropagation over 92 epochs
+## What it does
+- Stratified train / validation / test split, StandardScaler on the features
+- Training loop with backpropagation (CrossEntropyLoss + Adam), best model kept by validation loss
+- Test accuracy vs Logistic Regression baseline, per-class precision/recall
+- Saves `outputs/loss_curve.png`, `outputs/confusion_matrix.png`, `outputs/metrics.json`, `outputs/model.pt`
 
 ## Results
-
-| Model                        | Test Accuracy |
-|-------------------------------|:-------------:|
-| Logistic Regression (baseline)| 97.22%        |
-| **Neural Network (MLP)**      | **97.78%**    |
-
-The neural network outperforms the linear baseline, correctly classifying 352/360
-held-out test images across all 10 digit classes.
-
-![Confusion Matrix](confusion_matrix.png)
-
-## Tech Stack
-Python, NumPy, Scikit-learn, Matplotlib
-
-## How to Run
-```bash
-pip install numpy scikit-learn matplotlib
-python digit_classifier_nn.py
-```
-
-## Key Concepts Demonstrated
-Neural network architecture design (hidden layers, activation functions),
-backpropagation training, train/test evaluation, baseline comparison, and
-confusion-matrix-based error analysis.
+Run `python train.py` and copy the numbers from `outputs/metrics.json` here.
