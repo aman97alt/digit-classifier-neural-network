@@ -18,4 +18,4 @@ Optional flags: `--epochs 60 --batch-size 32 --lr 0.001 --seed 42`
 - Saves `outputs/loss_curve.png`, `outputs/confusion_matrix.png`, `outputs/metrics.json`, `outputs/model.pt`
 
 ## Results
-Run `python train.py` and copy the numbers from `outputs/metrics.json` here.
+ PyTorch MLP: 97.78% test accuracy. Logistic Regression baseline: 96.67%. Stratified 80/20 split on 1,797 samples.
